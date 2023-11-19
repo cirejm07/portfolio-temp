@@ -75,17 +75,17 @@
     <!-- Cursor -->
     <div class="cursor"></div>
 
+    <!-- progress-bar -->
+    <div class="progress-bar-before hide-mobile"></div>
+    <div class="progress-bar-after hide-mobile"></div>
+
     <header id="main-header" class="container">
       <nav>
-        <div class="logo nav-left">
-          <a href="#"
-            ><img src="./assets/logo.png" alt="Jeric Moreno Logo"
-          /></a>
-        </div>
-        <ul class="nav-right hide-mobile">
-          <li><a class="header-link" href="#section-2">About</a></li>
-          <li><a class="header-link" href="#section-1">Projects</a></li>
-          <li><a class="header-link" href="#section-3">Contact</a></li>
+        <ul class="nav hide-mobile">
+          <li><a class="header-link" href="#home">Home</a></li>
+          <li><a class="header-link" href="#about">About</a></li>
+          <li><a class="header-link" href="#projects">Projects</a></li>
+          <li><a class="header-link" href="#contact">Contact</a></li>
         </ul>
 
         <div
@@ -100,84 +100,130 @@
       </nav>
     </header>
 
-    <header id="scrolling-header" class="hide-mobile">
-      <nav>
-        <div class="logo nav-left">
-          <a href="#"
-            ><img src="./assets/logo.png" alt="Jeric Moreno Logo"
-          /></a>
-        </div>
-        <ul class="nav-right hide-mobile">
-          <li><a class="header-link" href="#section-2">About</a></li>
-          <li><a class="header-link" href="#section-1">Projects</a></li>
-          <li><a class="header-link" href="#section-3">Contact</a></li>
-        </ul>
-
-        <div
-          role="group"
-          aria-label="show menu"
-          class="hide-desktop hamburger-menu"
-        >
-          <span class="hamburger"></span>
-          <span class="hamburger"></span>
-          <span class="hamburger"></span>
-        </div>
-      </nav>
-    </header>
-
-    <main>
+    <main id="home">
       <!-- HP Banner -->
       <section id="hp-banner">
-        <div class="hero">
-          <h1 class="hero-title">Jeric Moreno</h1>
-          <h2 class="hero-subtitle">Frontend Web Developer</h2>
-        </div>
-        <div id="hero-arrow">
+        <div class="hero container">
+          <h1 class="hero-title animate__animated animate__fadeIn">
+            Front-End Web Developer
+          </h1>
+          <h2 class="hero-subtitle animate animate__fadeInUp">
+            Converting Designs into Pixel Perfect
+          </h2>
+          <p class="animate animate__fadeIn animate__delay-2s">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
+          </p>
           <a
-            tooltip-text="Go to about me section"
-            class="lottieflies trigger-tooltip"
-            href="#section-1"
-          ></a>
+            href="#"
+            class="hero-cta cta animate animate__fadeIn animate__delay-2s"
+          >
+            Let's Talk
+          </a>
         </div>
         <div id="particles-js"></div>
       </section>
 
-      <!-- Scroll Snap Section -->
-      <div role="group" id="section-wrapper">
-        <section id="section-1" class="section-group container">
-          <h2 class="animate-on-scroll">Section 1</h2>
-          <p class="animate-on-scroll">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
-            repellat, eos velit numquam quidem et non architecto corrupti
-            laborum laboriosam amet dolorum dolorem, dolore ab autem accusamus
-            quasi sit iusto.
-          </p>
-        </section>
-        <section id="section-2" class="section-group container">
-          <h2 class="animate-on-scroll">Section 2</h2>
-          <p class="animate-on-scroll">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
-            repellat, eos velit numquam quidem et non architecto corrupti
-            laborum laboriosam amet dolorum dolorem, dolore ab autem accusamus
-            quasi sit iusto.
-          </p>
-        </section>
-        <section id="section-3" class="section-group container">
-          <h2 class="animate-on-scroll">Section 3</h2>
-          <p class="animate-on-scroll">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
-            repellat, eos velit numquam quidem et non architecto corrupti
-            laborum laboriosam amet dolorum dolorem, dolore ab autem accusamus
-            quasi sit iusto.
-          </p>
-        </section>
-      </div>
+      <section id="about">
+        <div class="container">
+          <div class="animate-title">
+            <hr class="horizontal animate" data-animation="animate__fadeInUp" />
+            <h2 class="title animate" data-animation="animate__fadeInLeft">
+              About me
+            </h2>
+          </div>
 
-      <section id="contact-section">
+          <div class="content">
+            <p class="animate" data-animation="animate__fadeInUp">
+              My name is Jeric Moreno, I’m a Front-End Web Developer based in
+              Philippines and this is a selection of my personal and
+              Professional work
+            </p>
+
+            <p class="animate" data-animation="animate__fadeInUp">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here.
+            </p>
+
+            <a href="#" class="cta animate" data-animation="animate__fadeInLeft"
+              >Let's Talk</a
+            >
+          </div>
+
+          <svg
+            class="transparent-star animate"
+            data-animation="animate__fadeInRight"
+          >
+            <use xlink:href="assets/icon.svg#transparent-star"></use>
+          </svg>
+
+          <svg
+            class="primary-star animate"
+            data-animation="animate__fadeInLeft"
+          >
+            <use xlink:href="assets/icon.svg#primary-star"></use>
+          </svg>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="professional-title">Front-End Web Developer</div>
+        <svg class="primary-star" id="rotate-star">
+          <use xlink:href="assets/icon.svg#primary-star"></use>
+        </svg>
+        <h2 class="animate" data-animation="animate__fadeInLeft">
+          My Projects
+        </h2>
+
+        <div class="container">
+          <p class="animate" data-animation="animate__fadeInUp">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos
+            quas, eligendi itaque natus ut, aut sapiente impedit iusto
+            consequuntur, deserunt laboriosam iste repellendus aspernatur? Quam
+            minus architecto eligendi dignissimos. In iste dolor veniam repellat
+            et deleniti voluptate eveniet, quaerat, sit dolore odit, voluptatem
+            deserunt maiores perspiciatis vel vitae. Quibusdam est numquam
+            pariatur! Rem, ratione ducimus? Excepturi quasi officiis eaque!
+            Vitae iusto porro nulla itaque dicta quia deleniti, cum voluptas
+            blanditiis unde possimus aspernatur vero corporis ipsa dignissimos
+            libero quod provident, assumenda necessitatibus saepe voluptatum
+            tenetur. A accusamus aut consequuntur. Sunt, tenetur! Sit laboriosam
+            nesciunt consequatur ipsa esse debitis minus reiciendis delectus
+            magnam dolore eum consequuntur, vitae assumenda quas provident
+            exercitationem et error nam illo magni itaque praesentium fugiat
+            ullam! Suscipit eos fuga quidem reprehenderit tempore mollitia
+            corrupti quos eius minima accusamus asperiores iusto, sit laboriosam
+            dignissimos esse laudantium blanditiis nobis nemo explicabo
+            consectetur pariatur? Odio tenetur obcaecati quidem id! Obcaecati
+            quos ab ratione cum cumque in odit necessitatibus? Officia placeat
+            ducimus sed dolor id, rerum ratione magnam veritatis quo, dolores
+            pariatur cum, vel culpa minima voluptas. Modi, voluptas rerum?
+            Recusandae debitis incidunt tempora excepturi eaque doloribus,
+            pariatur voluptate consequuntur omnis, at maiores expedita aliquid.
+            Laudantium dolor molestias quas cupiditate? Ea, earum nulla nisi
+            quod explicabo incidunt molestias provident labore? Explicabo
+            expedita alias voluptate reprehenderit itaque repudiandae iusto,
+            sint perferendis quasi adipisci corrupti maiores harum, doloremque
+            architecto facere, delectus eaque vero sed dolorum nobis. Alias
+            reprehenderit expedita eligendi consequuntur repellendus. Aliquam,
+            at incidunt quidem ad modi quae laboriosam quos officiis ipsa non
+            debitis quo placeat iure aut aperiam assumenda rem illo dolor
+            inventore, consequatur quibusdam similique doloremque? Quia, rerum
+            asperiores? Molestias consectetur unde natus autem vitae a tenetur
+            numquam suscipit maiores ratione qui enim dolorem saepe repellendus
+            tempora ut, ullam sunt hic ad! Ipsam, fuga illum accusamus qui quo
+            corrupti.
+          </p>
+        </div>
+      </section>
+
+      <!-- <section id="contact-section">
         <h2>Let's Connect</h2>
 
         <form action=""></form>
-      </section>
+      </section> -->
     </main>
 
     <footer>

@@ -1,32 +1,67 @@
 // Function to handle the "DOMContentLoaded" event
 function onDOMContentLoaded() {
   const initHeaderOnScroll = () => {
-    const DesktopHeader = document.querySelector("#scrolling-header");
-    const mobileHeader = document.querySelector("#main-header");
-    const cursor = document.querySelector(".cursor");
+    const header = document.querySelector("#main-header");
 
-    window.addEventListener("scroll", () => {
-      if (window.innerWidth > 991) {
-        if (window.scrollY > 50) {
-          DesktopHeader.classList.add("scrolled");
-        } else {
-          DesktopHeader.classList.remove("scrolled");
+    // Declare variables outside the scroll event listener
+    let beforeHeader, afterHeader;
+
+    // Function to create and add the beforeHeader and afterHeader elements
+    const createHeaderDivs = () => {
+      beforeHeader = document.createElement("div");
+      beforeHeader.classList.add("beforeHeader");
+      document.body.insertBefore(beforeHeader, header);
+      beforeHeader.animate(
+        [
+          {
+            opacity: [0, 1],
+            transform: "scaleX(0)",
+          },
+          { transform: "scaleX(1)" },
+        ],
+        {
+          duration: 1000,
+          iterations: 1,
+          delay: 2,
         }
-      } else {
-        if (window.scrollY > 50) {
-          mobileHeader.classList.add("scrolled");
-        } else {
-          mobileHeader.classList.remove("scrolled");
-        }
+      );
+    };
+
+    // Function to remove the beforeHeader and afterHeader elements
+    const removeHeaderDivs = () => {
+      if (beforeHeader) {
+        beforeHeader.remove();
+        beforeHeader = null; // Reset beforeHeader variable
       }
-    });
 
-    DesktopHeader.addEventListener("mouseenter", () => {
-      cursor.style.mixBlendMode = "difference";
-    });
+      if (afterHeader) {
+        afterHeader.remove();
+        afterHeader = null; // Reset afterHeader variable
+      }
+    };
 
-    DesktopHeader.addEventListener("mouseleave", () => {
-      cursor.style.mixBlendMode = "unset";
+    // Toggle the class to trigger the width animation
+    function toggleWidthAnimation() {
+      const getBeforeHeader = document.querySelector(".beforeHeader");
+
+      if (getBeforeHeader) {
+        getBeforeHeader.classList.toggle("expand-width");
+      }
+    }
+
+    // Event listener for scroll events
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+        if (!beforeHeader && !afterHeader) {
+          createHeaderDivs(); // Invoke the function to create elements only if not created yet
+          toggleWidthAnimation();
+        }
+      } else if (window.scrollY < 100) {
+        header.classList.remove("scrolled");
+        removeHeaderDivs(); // Invoke the function to remove elements
+        toggleWidthAnimation();
+      }
     });
   };
 
@@ -35,7 +70,6 @@ function onDOMContentLoaded() {
 
     headerLinks.forEach((item) => {
       item.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent the default link behavior
         const clickedHref = event.target.getAttribute("href");
         const matchingLinks = document.querySelectorAll(
           `.header-link[href="${clickedHref}"]`
@@ -67,20 +101,20 @@ function onDOMContentLoaded() {
       {
         particles: {
           number: {
-            value: 200,
+            value: 50,
             density: {
               enable: true,
               value_area: 800,
             },
           },
           color: {
-            value: "#36454f",
+            value: "#17edc5",
           },
           shape: {
             type: "circle",
             stroke: {
               width: 0,
-              color: "#36454f",
+              color: "#333258",
             },
             polygon: {
               nb_sides: 5,
@@ -114,7 +148,7 @@ function onDOMContentLoaded() {
           line_linked: {
             enable: true,
             distance: 150,
-            color: "#36454f",
+            color: "#333258",
             opacity: 0.4,
             width: 1,
           },
@@ -173,7 +207,7 @@ function onDOMContentLoaded() {
         retina_detect: true,
         config_demo: {
           hide_card: false,
-          background_color: "#36454f",
+          background_color: "#333258",
           background_image: "",
           background_position: "50% 50%",
           background_repeat: "no-repeat",
@@ -197,60 +231,43 @@ function onDOMContentLoaded() {
 
     links.forEach((link) => {
       link.addEventListener("mouseenter", () => {
-        console.log(`Cursor is hovering over ${link.textContent}`);
+        // console.log(`Cursor is hovering over ${link.textContent}`);
         cursor.classList.add("hover-link");
       });
 
       link.addEventListener("mouseleave", () => {
-        console.log(`Cursor is not hovering over ${link.textContent}`);
+        // console.log(`Cursor is not hovering over ${link.textContent}`);
         cursor.classList.remove("hover-link");
       });
     });
   };
 
-  const initLottieFlies = () => {
-    const animationPath = "assets/arrow-down.json";
-    const container = document.querySelector(".lottieflies");
-
-    const animation = lottie.loadAnimation({
-      container: container,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      path: animationPath,
-    });
-  };
-
   const initIntersectionObserverAnimate = () => {
-    const elementsToAnimate = document.querySelectorAll(".animate-on-scroll");
+    const elementsToAnimate = document.querySelectorAll(".animate");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const nodeName = entry.target.nodeName.toLowerCase();
-
-          switch (nodeName) {
-            case "h2":
-              entry.target.classList.add(
-                "animate__animated",
-                "animate__fadeInLeft"
-              );
-              break;
-            case "p":
-              entry.target.classList.add(
-                "animate__animated",
-                "animate__fadeInUp"
-              );
-              break;
-            default:
-              break;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        document.documentElement.style.setProperty(
+          "--animate-duration",
+          "2.5s"
+        );
+        entries.forEach((entry) => {
+          if (
+            entry.isIntersecting &&
+            entry.target.classList.contains("animate")
+          ) {
+            console.log(entry.target);
+            const dataAnimation = entry.target.getAttribute("data-animation");
+            entry.target.classList.add("animate__animated", dataAnimation);
+            entry.target.style.opacity = 1;
+            observer.unobserve(entry.target);
           }
-
-          entry.target.style.opacity = 1;
-          observer.unobserve(entry.target);
-        }
-      });
-    });
+        });
+      },
+      {
+        threshold: 1, // Trigger the callback as soon as any part of the element is visible
+      }
+    );
 
     elementsToAnimate.forEach((element) => {
       observer.observe(element);
@@ -258,28 +275,27 @@ function onDOMContentLoaded() {
   };
 
   const initHeaderProgressBar = () => {
-    const headers = document.querySelectorAll("header");
-
-    headers.forEach((header) => {
-      const progressBarBefore = document.createElement("div");
-      progressBarBefore.className = "progress-bar-before hide-mobile";
-
-      const progressBarAfter = document.createElement("div");
-      progressBarAfter.className = "progress-bar-after hide-mobile";
-
-      header.appendChild(progressBarBefore);
-      header.appendChild(progressBarAfter);
-    });
+    const progressBarBefore = document.querySelector(".progress-bar-before");
+    const progressBarAfter = document.querySelector(".progress-bar-after");
 
     window.addEventListener("scroll", () => {
-      headers.forEach((header) => {
-        const progressBarBefore = header.querySelector(".progress-bar-before");
-        const progressBarAfter = header.querySelector(".progress-bar-after");
-        const totalHeight = document.body.scrollHeight - window.innerHeight;
-        const progress = (window.scrollY / totalHeight) * 100;
-        progressBarBefore.style.width = progress + "%";
-        progressBarAfter.style.width = progress + "%";
-      });
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      progressBarBefore.style.width = progress + "%";
+      progressBarAfter.style.width = progress + "%";
+    });
+  };
+
+  const initRotateStar = () => {
+    window.addEventListener("scroll", () => {
+      if (window.innerWidth > 991) {
+        const start = document.querySelector("#rotate-star");
+
+        const scrollValue = window.scrollY;
+        const rotationValue = scrollValue / 5;
+
+        start.style.transform = `rotate(${rotationValue}deg)`;
+      }
     });
   };
 
@@ -289,9 +305,9 @@ function onDOMContentLoaded() {
     initToggleHamburgerMenu();
     initParticleJS();
     initFollowCursorOnBanner();
-    initLottieFlies();
     initIntersectionObserverAnimate();
     initHeaderProgressBar();
+    initRotateStar();
   };
 
   loadScripts();

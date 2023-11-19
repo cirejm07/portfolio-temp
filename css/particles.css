@@ -6,12 +6,12 @@ canvas {
 /* ---- stats.js ---- */
 
 .count-particles {
-  background: #36454f;
+  background: #101f42;
   position: absolute;
   top: 48px;
   left: 0;
   width: 80px;
-  color: #36454f;
+  color: #101f42;
   font-size: 0.8em;
   text-align: left;
   text-indent: 4px;

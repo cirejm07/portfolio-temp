@@ -1,0 +1,18 @@
+
+<svg xmlns="http://www.w3.org/2000/svg">
+
+<symbol id="transparent-star" viewBox="0 0 243 242">
+<path d="M121.5 0V241.011" stroke="white" stroke-opacity="0.05" stroke-width="19"/>
+  <path d="M207.088 35.6743L35.9123 205.337" stroke="white" stroke-opacity="0.05" stroke-width="19"/>
+  <path d="M205.249 207.152L37.7508 33.8588" stroke="white" stroke-opacity="0.05" stroke-width="19"/>
+  <path d="M242 119.351L0.99999 121.66" stroke="white" stroke-opacity="0.05" stroke-width="19"/>
+</symbol>
+
+<symbol id="primary-star" viewBox="0 0 140 138">
+  <path d="M70 0V138.006" stroke="#0EF7B5" stroke-width="6"/>
+    <path d="M119.009 20.4276L20.9913 117.579" stroke="#0EF7B5" stroke-width="6"/>
+    <path d="M117.956 118.618L22.044 19.388" stroke="#0EF7B5" stroke-width="6"/>
+    <path d="M139 68.3421L1 69.6641" stroke="#0EF7B5" stroke-width="6"/>
+</symbol>
+
+</svg>
