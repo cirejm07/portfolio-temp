@@ -69,6 +69,15 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
+    <!-- Lightbox 2 -->
+    <link rel="stylesheet" href="./css/lightbox.css" />
+
+    <!-- Typewriter Effect -->
+    <script
+      defer
+      src="https://unpkg.com/typewriter-effect@latest/dist/core.js"
+    ></script>
+
     <title>Jeric Moreno - Front-End Web Developer Portfolio</title>
   </head>
   <body>
@@ -135,16 +144,16 @@
 
           <div class="content">
             <p class="animate" data-animation="animate__fadeInUp">
-              My name is Jeric Moreno, I’m a Front-End Web Developer based in
-              Philippines and this is a selection of my personal and
-              Professional work
+              Hello, my name is Jeric Moreno, and I'm your Front-End Maestro
+              from the Philippines! In this curated display, prepare to discover
+              a fusion of my own flair and professional skill
             </p>
 
             <p class="animate" data-animation="animate__fadeInUp">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here.
+              It's a well-established fact that a reader's eye can readily stray
+              when examining the arrangement of a page. The clever thing about
+              using Lorem Ipsum is that it provides a text with a fairly
+              standard letter layout, avoiding the boring 'Content here.'
             </p>
 
             <a href="#" class="cta animate" data-animation="animate__fadeInLeft"
@@ -170,64 +179,164 @@
 
       <section id="projects">
         <div class="professional-title">Front-End Web Developer</div>
-        <svg class="primary-star" id="rotate-star">
-          <use xlink:href="assets/icon.svg#primary-star"></use>
-        </svg>
+        <div class="animate" data-animation="animate__fadeInRight">
+          <svg class="primary-star" id="rotate-star">
+            <use xlink:href="assets/icon.svg#primary-star"></use>
+          </svg>
+        </div>
+        <div class="frame-bg animate" data-animation="animate__fadeInLeft">
+          <img src="./assets/Frame.png" alt="Frame background" />
+        </div>
         <h2 class="animate" data-animation="animate__fadeInLeft">
           My Projects
         </h2>
 
         <div class="container">
-          <p class="animate" data-animation="animate__fadeInUp">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos
-            quas, eligendi itaque natus ut, aut sapiente impedit iusto
-            consequuntur, deserunt laboriosam iste repellendus aspernatur? Quam
-            minus architecto eligendi dignissimos. In iste dolor veniam repellat
-            et deleniti voluptate eveniet, quaerat, sit dolore odit, voluptatem
-            deserunt maiores perspiciatis vel vitae. Quibusdam est numquam
-            pariatur! Rem, ratione ducimus? Excepturi quasi officiis eaque!
-            Vitae iusto porro nulla itaque dicta quia deleniti, cum voluptas
-            blanditiis unde possimus aspernatur vero corporis ipsa dignissimos
-            libero quod provident, assumenda necessitatibus saepe voluptatum
-            tenetur. A accusamus aut consequuntur. Sunt, tenetur! Sit laboriosam
-            nesciunt consequatur ipsa esse debitis minus reiciendis delectus
-            magnam dolore eum consequuntur, vitae assumenda quas provident
-            exercitationem et error nam illo magni itaque praesentium fugiat
-            ullam! Suscipit eos fuga quidem reprehenderit tempore mollitia
-            corrupti quos eius minima accusamus asperiores iusto, sit laboriosam
-            dignissimos esse laudantium blanditiis nobis nemo explicabo
-            consectetur pariatur? Odio tenetur obcaecati quidem id! Obcaecati
-            quos ab ratione cum cumque in odit necessitatibus? Officia placeat
-            ducimus sed dolor id, rerum ratione magnam veritatis quo, dolores
-            pariatur cum, vel culpa minima voluptas. Modi, voluptas rerum?
-            Recusandae debitis incidunt tempora excepturi eaque doloribus,
-            pariatur voluptate consequuntur omnis, at maiores expedita aliquid.
-            Laudantium dolor molestias quas cupiditate? Ea, earum nulla nisi
-            quod explicabo incidunt molestias provident labore? Explicabo
-            expedita alias voluptate reprehenderit itaque repudiandae iusto,
-            sint perferendis quasi adipisci corrupti maiores harum, doloremque
-            architecto facere, delectus eaque vero sed dolorum nobis. Alias
-            reprehenderit expedita eligendi consequuntur repellendus. Aliquam,
-            at incidunt quidem ad modi quae laboriosam quos officiis ipsa non
-            debitis quo placeat iure aut aperiam assumenda rem illo dolor
-            inventore, consequatur quibusdam similique doloremque? Quia, rerum
-            asperiores? Molestias consectetur unde natus autem vitae a tenetur
-            numquam suscipit maiores ratione qui enim dolorem saepe repellendus
-            tempora ut, ullam sunt hic ad! Ipsam, fuga illum accusamus qui quo
-            corrupti.
-          </p>
+          <div
+            class="project-detail animate"
+            data-animation="animate__fadeInUp"
+          >
+            <div class="selected-project">Selected Work</div>
+            <div class="current-selected-project" id="currentSelectedProject">
+              <p class="current-selected-project__title"></p>
+              <p class="current-selected-project__date"></p>
+              <p class="current-selected-project__content"></p>
+            </div>
+            <div id="projectCta">
+              <a id="arrow-prev">
+                <span class="sr-only" title="go to previous project"
+                  >left arrow</span
+                >
+                <svg class="arrow-slider" id="left-arrow">
+                  <use xlink:href="assets/icon.svg#left-arrow"></use>
+                </svg>
+              </a>
+              <a id="arrow-next" class="cta active">
+                <span class="sr-only" title="go to next project"
+                  >right arrow</span
+                >
+                <svg class="arrow-slider" id="right-arrow">
+                  <use xlink:href="assets/icon.svg#right-arrow"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div id="gallery-project">
+            <div
+              class="gallery-item animate"
+              data-animation="animate__fadeIn"
+              data-item="1"
+            >
+              <a
+                href="/assets/cafe-milan.jpg"
+                data-lightbox="cafe-milan"
+                data-title="Cafe Milan"
+                ><img
+                  loading="lazy"
+                  src="/assets/cafe-milan.jpg"
+                  alt="Cafe Milan"
+              /></a>
+              <a
+                href="/assets/cafe-milan2.jpg"
+                data-lightbox="cafe-milan"
+                data-title="Cafe Milan"
+              ></a>
+              <a
+                href="/assets/cafe-milan3.jpg"
+                data-lightbox="cafe-milan"
+                data-title="Cafe Milan"
+              ></a>
+              <a
+                href="/assets/cafe-milan4.jpg"
+                data-lightbox="cafe-milan"
+                data-title="Cafe Milan"
+              ></a>
+            </div>
+            <div
+              class="gallery-item animate"
+              data-animation="animate__fadeIn"
+              data-item="2"
+            >
+              Project 2
+            </div>
+            <div
+              class="gallery-item animate"
+              data-animation="animate__fadeIn"
+              data-item="3"
+            >
+              Project 3
+            </div>
+            <div
+              class="gallery-item animate"
+              data-animation="animate__fadeIn"
+              data-item="4"
+            >
+              Project 4
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- <section id="contact-section">
-        <h2>Let's Connect</h2>
-
-        <form action=""></form>
-      </section> -->
+      <section id="what-do">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="what-do__left">
+                <div class="what-do__title">What Do <span>I Help</span></div>
+                <p>
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when established fact that a
+                  read It is a long established fact that
+                </p>
+                <div class="animation-numbers">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <span id="">100+</span>
+                      <span>Completed Projects</span>
+                    </div>
+                    <div class="col-lg-6">
+                      <span>100+</span>
+                      <span>Happy Clients</span>
+                    </div>
+                    <div class="col-lg-6">
+                      <span>1.5+</span>
+                      <span>Years of Experience</span>
+                    </div>
+                    <div class="col-lg-6">
+                      <span>8.0+</span>
+                      <span>Website Awards</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="what-do__right">
+                <h3>Online Platform & Website</h3>
+                <p>
+                  It is a long established fact that a reader will be distracted
+                  by the readable content of a page when established fact that a
+                  read It is a long
+                </p>
+                <ul>
+                  <li>Mastering HTML, CSS, and JavaScript</li>
+                  <li>Responsive and Mobile Design</li>
+                  <li>Browser Developer Tools</li>
+                  <li>Version Control/Git</li>
+                  <li>Build and Task Automation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
       <div>&copy; <span id="currentDate"></span> Jeric Moreno</div>
     </footer>
+
+    <script src="/js/lightbox-plus-jquery.js"></script>
   </body>
 </html>
