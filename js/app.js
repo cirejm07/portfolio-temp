@@ -1,5 +1,7 @@
 // Function to handle the "DOMContentLoaded" event
 function onDOMContentLoaded() {
+  document.querySelector("html").style.display = "block";
+
   const initHeaderOnScroll = () => {
     const header = document.querySelector("#main-header");
 
@@ -264,12 +266,14 @@ function onDOMContentLoaded() {
   const initRotateStar = () => {
     window.addEventListener("scroll", () => {
       if (window.innerWidth > 991) {
-        const start = document.querySelector("#rotate-star");
+        const start = document.querySelectorAll(".rotate-star");
 
         const scrollValue = window.scrollY;
         const rotationValue = scrollValue / 5;
 
-        start.style.transform = `rotate(${rotationValue}deg)`;
+        start.forEach((item) => {
+          item.style.transform = `rotate(${rotationValue}deg)`;
+        });
       }
     });
   };
@@ -506,6 +510,54 @@ function onDOMContentLoaded() {
       .start();
   };
 
+  // Function to animate the counter
+  const initAnimateCounter = () => {
+    function animateCounter(counterElement, targetNumber) {
+      let currentNumber = 0;
+      const duration = 2000; // Animation duration in milliseconds
+      const step = targetNumber / (duration / 16); // Update every 16ms for smooth animation
+
+      function updateCounter() {
+        currentNumber += step;
+        counterElement.textContent = Math.floor(currentNumber);
+
+        if (currentNumber < targetNumber) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counterElement.textContent = `${targetNumber}+`;
+        }
+      }
+
+      updateCounter();
+    }
+
+    // Function to handle intersection changes
+    function handleIntersection(entries, observer) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counterElement = entry.target;
+          const dataNumber = counterElement.getAttribute("data-number");
+          const targetNumber = dataNumber.includes(".")
+            ? parseFloat(dataNumber)
+            : parseInt(dataNumber, 10);
+          animateCounter(counterElement, targetNumber);
+          observer.unobserve(counterElement);
+        }
+      });
+    }
+
+    // Set up the Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+
+    // Observe all elements with the class "counter"
+    const counterElements = document.querySelectorAll(".counter");
+    counterElements.forEach((counterElement) =>
+      observer.observe(counterElement)
+    );
+  };
+
   const loadScripts = () => {
     initTypewriterEffect();
     initHeaderLinks();
@@ -517,6 +569,7 @@ function onDOMContentLoaded() {
     initHeaderProgressBar();
     initRotateStar();
     initGalleryProject();
+    initAnimateCounter();
   };
 
   loadScripts();
