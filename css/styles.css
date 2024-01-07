@@ -140,6 +140,7 @@ h2 {
   background: var(--primary-color);
   position: relative;
   pointer-events: all !important;
+  border: none;
 }
 
 .cta:hover {
@@ -984,6 +985,7 @@ nav {
   font-weight: 400;
   line-height: 25px;
   max-width: 455px;
+  margin-bottom: 49px;
 }
 
 #what-do .what-do__left .animation-numbers .col-lg-6 {
@@ -1016,7 +1018,7 @@ nav {
 
 #what-do .what-do__right {
   background: #551ef4;
-  padding: 50px;
+  padding: 50px 50px 30px 50px;
 }
 
 #what-do .what-do__right > h3 {
@@ -1071,4 +1073,235 @@ footer {
   .container {
     max-width: 1160px !important;
   }
+}
+
+#testimonial {
+  margin-top: 150px;
+  overflow: hidden;
+}
+
+#testimonial h2 {
+  color: #fff;
+  text-align: center;
+  font-family: var(--Amoitar-font);
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 93px;
+}
+
+#testimonial > p {
+  color: #fff;
+  text-align: center;
+  font-family: var(--Inter-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  max-width: 637px;
+  margin-inline: auto;
+  margin-bottom: 71px;
+}
+
+#testimonial .testimonial-img {
+  max-width: 250px;
+  height: 250px;
+}
+
+#testimonial .testimonial-img img {
+  object-fit: cover;
+  height: 100%;
+}
+
+@media (min-width: 991px) {
+  #testimonial .row {
+    margin-inline: auto;
+    justify-content: center;
+    flex-wrap: nowrap;
+    max-width: 650px;
+  }
+
+  #testimonial .row .col-md-7 {
+    padding-left: 85px;
+    padding-top: 20px;
+  }
+}
+
+blockquote {
+  color: var(--primary-text-color);
+  font-family: var(--Inter-font);
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+  position: relative;
+}
+
+blockquote > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 80px;
+  position: absolute;
+  color: var(--primary-text-color);
+  font-family: var(--Amoitar-font);
+  top: -5px;
+  left: -45px;
+}
+
+blockquote cite {
+  font-family: var(--Inter-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+blockquote footer {
+  background-color: transparent;
+  padding: 0;
+  margin-top: 16px;
+}
+
+blockquote footer p {
+  margin-bottom: 0;
+}
+
+#contact {
+  margin-top: 100px;
+}
+
+#contact a {
+  color: var(--primary-color);
+  transition: 0.35s ease-in-out;
+}
+
+#contact a:hover {
+  filter: opacity(0.7);
+}
+
+#contact .container {
+  background: rgba(85, 30, 244, 0.22);
+  padding: 50px 289px;
+  color: var(--primary-text-color);
+}
+
+@media (max-width: 991px) {
+  #contact .container {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  #contact .container {
+    padding: 15px;
+  }
+}
+
+#contact div > h2 {
+  color: #fff;
+  text-align: center;
+  font-family: var(--Amoitar-font);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 55px;
+  margin-bottom: 34px;
+}
+
+#contact div > p {
+  color: #f0f0f0;
+  text-align: center;
+  font-family: var(--Inter-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+  margin-bottom: 35px;
+}
+
+#contact .form-check-input[type="checkbox"] {
+  float: unset;
+  vertical-align: bottom;
+  margin-bottom: 6px;
+  border-radius: 0;
+}
+
+#contact .form-check-input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+}
+
+#contact .form-check-input[type="checkbox"] ~ label {
+  margin-left: 15px;
+}
+
+#contact label {
+  transition: all 0.35s ease-in-out;
+}
+
+#contact .form__email,
+#contact .form__fName {
+  position: relative;
+}
+
+#contact .form__email label,
+#contact .form__email label,
+#contact .form__fName label,
+#contact .form__fName label {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  color: var(--primary-color);
+  pointer-events: none;
+}
+
+#contact .form__email input:focus + label,
+#contact .form__email input:not(:placeholder-shown) + label,
+#contact .form__fName input:focus + label,
+#contact .form__fName input:not(:placeholder-shown) + label {
+  top: -25px;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 0;
+}
+
+#contact input,
+#contact textarea {
+  color: var(--primary-text-color);
+}
+
+#contact input[type="text"],
+#contact textarea {
+  margin-top: 30px;
+}
+
+#contact textarea {
+  padding-top: 40px;
+  resize: none;
+  height: 350px;
+}
+
+#contact textarea + label {
+  color: var(--primary-color);
+}
+
+#contact .form-control:focus {
+  color: var(--primary-color);
+  box-shadow: 0 0 0 0.25em var(--primary-color);
+}
+
+.fancybox-container li {
+  list-style-type: auto !important;
 }
