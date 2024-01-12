@@ -282,6 +282,59 @@ header nav .logo {
   }
 }
 
+header nav .social {
+  position: fixed;
+  left: 0px;
+  top: 30%;
+  transform: translate(0, 0);
+}
+
+header nav .social li {
+  margin: 15px 0;
+}
+
+header nav .social a {
+  transition: 0.35s all ease-in-out;
+  display: block;
+}
+
+header nav .social a:hover {
+  transform: rotate(365deg);
+}
+
+header nav .social i {
+  color: var(--primary-color);
+  font-size: 2rem;
+  position: relative; /* Add this line */
+  animation: floatingSocial 2s infinite alternate;
+  transition: 0.4s all ease-in-out;
+}
+
+header nav .social i[class*="fa-linked"] {
+  font-size: 2.1rem;
+}
+
+header nav .social i[class*="fa-envelope"] {
+  font-size: 1.85rem;
+}
+
+header nav .social a:hover i {
+  color: var(--primary-text-color);
+  font-size: 2.2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+@keyframes floatingSocial {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 header nav .nav {
   display: flex;
   justify-content: center;
@@ -1065,8 +1118,9 @@ nav {
 
 footer {
   padding: 35px 25px;
-  background: #000;
   color: var(--primary-text-color);
+  text-align: center;
+  font-family: var(--Inter-font);
 }
 
 @media (min-width: 1200px) {
