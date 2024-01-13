@@ -379,6 +379,25 @@ function onDOMContentLoaded() {
         currentProject = projects.length - 1;
       }
       projectArray();
+
+      const galleryImg = document.querySelectorAll(".gallery-item");
+
+      galleryImg.forEach((item, idx) => {
+        // const firstChild = item.firstElementChild;
+
+        if (item) {
+          item.classList.remove("animatedScale");
+
+          // Triggering a reflow to restart the animation
+          void item.offsetWidth;
+
+          item.classList.add("animatedScale");
+
+          item.addEventListener("animationiteration", () => {
+            item.classList.remove("animatedScale");
+          });
+        }
+      });
     });
 
     nextArrow.addEventListener("click", () => {
