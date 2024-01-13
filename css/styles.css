@@ -314,6 +314,10 @@ header nav .social i[class*="fa-linked"] {
   font-size: 2.1rem;
 }
 
+header nav .social li a {
+  color: var(--primary-text-color);
+}
+
 header nav .social i[class*="fa-envelope"] {
   font-size: 1.85rem;
 }
@@ -483,6 +487,14 @@ header .nav a.active::before {
 #hp-banner a {
   margin-inline: auto;
   margin-top: 47px;
+}
+
+#hp-banner #lottie-arrow-down {
+  max-width: 150px;
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, -58%);
 }
 
 @media (max-width: 375px) {
@@ -658,6 +670,7 @@ nav {
   text-transform: uppercase;
   margin-left: 9px;
   margin-bottom: 0;
+  font-weight: bold;
 }
 
 #about .content p {
@@ -1312,7 +1325,7 @@ blockquote footer p {
   position: absolute;
   top: 8px;
   left: 15px;
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
   pointer-events: none;
 }
 
@@ -1327,12 +1340,13 @@ blockquote footer p {
 #contact input[type="email"],
 #contact textarea {
   background: transparent;
-  border: 1px solid var(--primary-color);
+  /* border: 1px solid var(--primary-color); */
   border-radius: 0;
 }
 
 #contact input,
 #contact textarea {
+  /* color: var(--primary-text-color); */
   color: var(--primary-text-color);
 }
 
@@ -1348,12 +1362,12 @@ blockquote footer p {
 }
 
 #contact textarea + label {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
 }
 
 #contact .form-control:focus {
-  color: var(--primary-color);
-  box-shadow: 0 0 0 0.25em var(--primary-color);
+  /* color: var(--primary-color); */
+  /* box-shadow: 0 0 0 0.25em var(--primary-color); */
 }
 
 .fancybox-container li {

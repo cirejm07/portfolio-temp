@@ -59,8 +59,12 @@
 
     <!-- Lottieflies -->
     <script
-      async
+      defer
       src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"
     ></script>
 
     <!-- Animate.css -->
@@ -71,6 +75,7 @@
 
     <!-- Lightbox 2 -->
     <link rel="stylesheet" href="./css/lightbox.css" />
+    <script defer src="/js/lightbox-plus-jquery.js"></script>
 
     <!-- Fancy Box -->
     <link
@@ -170,6 +175,11 @@
             Let's Talk
           </a>
         </div>
+        <div
+          class="animate animate__delay-2s"
+          data-animation="animate__fadeIn"
+          id="lottie-arrow-down"
+        ></div>
         <div id="particles-js"></div>
       </section>
 
@@ -250,7 +260,7 @@
           >
             <div class="selected-project">Selected Work</div>
             <div class="current-selected-project" id="currentSelectedProject">
-              <p class="current-selected-project__title"></p>
+              <h3 class="current-selected-project__title"></h3>
               <p class="current-selected-project__date"></p>
               <p class="current-selected-project__content"></p>
             </div>
@@ -283,7 +293,7 @@
               <a
                 href="/assets/cafe-milan.jpg"
                 data-lightbox="cafe-milan"
-                data-title="Cafe Milan"
+                data-title="Cafe Milan 1"
                 ><img
                   loading="lazy"
                   src="/assets/cafe-milan.jpg"
@@ -292,17 +302,17 @@
               <a
                 href="/assets/cafe-milan2.jpg"
                 data-lightbox="cafe-milan"
-                data-title="Cafe Milan"
+                data-title="Cafe Milan 2"
               ></a>
               <a
                 href="/assets/cafe-milan3.jpg"
                 data-lightbox="cafe-milan"
-                data-title="Cafe Milan"
+                data-title="Cafe Milan 3"
               ></a>
               <a
                 href="/assets/cafe-milan4.jpg"
                 data-lightbox="cafe-milan"
-                data-title="Cafe Milan"
+                data-title="Cafe Milan 4"
               ></a>
             </div>
             <div
@@ -566,10 +576,15 @@
                   name="email"
                   class="form-control"
                   id="email"
-                  aria-describedby="emailHelp"
                   placeholder=" "
+                  aria-label="Email Address"
+                  required
                 />
                 <label for="email" class="form-label">Email Address</label>
+                <!-- aria-describedby="emailHelp" -->
+                <!-- <div id="emailHelp" class="form-text">
+                  We'll never share your email with anyone else.
+                </div> -->
               </div>
             </div>
             <div class="mb-3">
@@ -579,10 +594,15 @@
                   name="fName"
                   class="form-control"
                   id="fName"
-                  aria-describedby="Full Name"
+                  aria-label="Full Name"
                   placeholder=" "
+                  required
                 />
+
                 <label for="fName" class="form-label">Full Name</label>
+                <!-- <div id="fullNameHelp" class="form-text">
+                  Enter your full name as it appears on official documents.
+                </div> -->
               </div>
             </div>
             <div class="form-floating mb-3">
@@ -678,6 +698,24 @@
       </div>
     </footer>
 
-    <script src="/js/lightbox-plus-jquery.js"></script>
+    <script defer>
+      addEventListener("DOMContentLoaded", () => {
+        fetch("./assets/lottie-arrow-down.json")
+          .then((response) => response.json())
+          .then((animationData) => {
+            // Load the animation
+            var anim = bodymovin.loadAnimation({
+              container: document.getElementById("lottie-arrow-down"),
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              animationData: animationData,
+            });
+          })
+          .catch((error) =>
+            console.error("Error loading animation data:", error)
+          );
+      });
+    </script>
   </body>
 </html>
