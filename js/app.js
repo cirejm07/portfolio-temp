@@ -577,6 +577,20 @@ function onDOMContentLoaded() {
     );
   };
 
+  const initHamburgerMenu = () => {
+    const burgerBtn = document.querySelector("#hamburger-btn");
+    const slider = document.querySelector("#menu-slider");
+    burgerBtn.addEventListener("click", () => {
+      if (slider.classList.contains("clipped")) {
+        slider.classList.remove("clipped");
+        slider.classList.add("unclipped");
+      } else {
+        slider.classList.remove("unclipped");
+        slider.classList.add("clipped");
+      }
+    });
+  };
+
   const loadScripts = () => {
     initTypewriterEffect();
     initHeaderLinks();
@@ -589,6 +603,7 @@ function onDOMContentLoaded() {
     initRotateStar();
     initGalleryProject();
     initAnimateCounter();
+    initHamburgerMenu();
   };
 
   loadScripts();

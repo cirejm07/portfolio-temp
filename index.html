@@ -108,41 +108,44 @@
 
     <header id="main-header" class="container">
       <nav>
-        <ul class="social">
-          <li>
-            <a
-              href="https://github.com/cirejm07/"
-              target="_blank"
-              title="opens github page in a new tab"
-              ><i class="fa-brands fa-github"></i
-              ><span class="sr-only">Github</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/jericmoreno/"
-              target="_blank"
-              title="opens linkedin page in a new tab"
-              ><i class="fa-brands fa-linkedin"></i
-              ><span class="sr-only">LinkedIn</span></a
-            >
-          </li>
-          <li>
-            <a href="mailto:moreno.jeric1995@gmail.com"
-              ><i class="fa-solid fa-envelope"></i
-              ><span class="sr-only">Email</span></a
-            >
-          </li>
-        </ul>
+        <div id="menu-slider" role="menuitem" aria-label="menu items">
+          <ul class="social">
+            <li>
+              <a
+                href="https://github.com/cirejm07/"
+                target="_blank"
+                title="opens github page in a new tab"
+                ><i class="fa-brands fa-github"></i
+                ><span class="sr-only">Github</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jericmoreno/"
+                target="_blank"
+                title="opens linkedin page in a new tab"
+                ><i class="fa-brands fa-linkedin"></i
+                ><span class="sr-only">LinkedIn</span></a
+              >
+            </li>
+            <li>
+              <a href="mailto:moreno.jeric1995@gmail.com"
+                ><i class="fa-solid fa-envelope"></i
+                ><span class="sr-only">Email</span></a
+              >
+            </li>
+          </ul>
 
-        <ul class="nav hide-mobile">
-          <li><a class="header-link" href="#home">Home</a></li>
-          <li><a class="header-link" href="#about">About</a></li>
-          <li><a class="header-link" href="#projects">Projects</a></li>
-          <li><a class="header-link" href="#contact">Contact</a></li>
-        </ul>
+          <ul class="nav">
+            <li><a class="header-link" href="#home">Home</a></li>
+            <li><a class="header-link" href="#about">About</a></li>
+            <li><a class="header-link" href="#projects">Projects</a></li>
+            <li><a class="header-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
 
         <div
+          id="hamburger-btn"
           role="group"
           aria-label="show menu"
           class="hide-desktop hamburger-menu"
@@ -700,9 +703,31 @@
 
     <script defer>
       addEventListener("DOMContentLoaded", () => {
-        fetch("./assets/lottie-arrow-down.json")
-          .then((response) => response.json())
-          .then((animationData) => {
+        // fetch("./assets/lottie-arrow-down.json")
+        //   .then((response) => response.json())
+        //   .then((animationData) => {
+        //     // Load the animation
+        //     var anim = bodymovin.loadAnimation({
+        //       container: document.getElementById("lottie-arrow-down"),
+        //       renderer: "svg",
+        //       loop: true,
+        //       autoplay: true,
+        //       animationData: animationData,
+        //     });
+        //   })
+        //   .catch((error) =>
+        //     console.error("Error loading animation data:", error)
+        //   );
+        async function loadAnimation() {
+          try {
+            const response = await fetch("./assets/lottie-arrow-down.json");
+            if (!response.ok) {
+              throw new Error(
+                `Couldn't fetch the file, please check the file path or if the file exists in the path directory`
+              );
+              return;
+            }
+            const animationData = await response.json();
             // Load the animation
             var anim = bodymovin.loadAnimation({
               container: document.getElementById("lottie-arrow-down"),
@@ -711,10 +736,12 @@
               autoplay: true,
               animationData: animationData,
             });
-          })
-          .catch((error) =>
-            console.error("Error loading animation data:", error)
-          );
+          } catch (error) {
+            console.error("Error loading animation data:", error);
+          }
+        }
+
+        loadAnimation();
       });
     </script>
   </body>

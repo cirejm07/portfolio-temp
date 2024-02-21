@@ -88,7 +88,7 @@ html {
   }
 }
 
-@media only screen and (min-width: 991px) {
+@media only screen and (min-width: 992px) {
   .hide-desktop {
     display: none !important;
   }
@@ -339,6 +339,32 @@ header nav .social a:hover i {
   }
 }
 
+@media (max-width: 991px) {
+  header nav .social {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 0;
+    max-width: max-content;
+    margin: 15px 25px auto auto;
+  }
+
+  header nav .nav {
+    flex-direction: column;
+    justify-content: flex-start !important;
+    gap: 10px;
+    width: max-content;
+    margin: 20px 25px auto auto;
+    gap: 15px !important;
+  }
+
+  header nav .nav a {
+    text-align: end;
+    width: max-content;
+  }
+}
+
 header nav .nav {
   display: flex;
   justify-content: center;
@@ -384,6 +410,70 @@ header .nav a:hover::before {
 /* Active Link */
 header .nav a.active::before {
   transform: scaleX(1);
+}
+
+@media (max-width: 991px) {
+  header {
+    padding-top: 15px !important;
+  }
+
+  header #menu-slider {
+    position: fixed;
+    top: 0;
+    /* right: -150%; */
+    clip-path: circle(0% at 100% 0);
+    transition: all 1s ease-in-out;
+    background: #000;
+    width: 100%;
+    height: 100vh; /* Use vh instead of dvh */
+    z-index: 9999;
+  }
+
+  header #menu-slider li {
+    width: 100%;
+    text-align: end;
+    display: flex;
+    justify-content: end;
+  }
+
+  /* header #menu-slider.active-slider {
+    transform: translate(0%, 0%);
+} */
+
+  header #menu-slider.clipped {
+    animation: sliderMenuIn 2s ease-in-out;
+    clip-path: circle(50% at 100% 0);
+  }
+
+  header #menu-slider.unclipped {
+    animation: sliderMenuOut 2s ease-in-out;
+    clip-path: circle(0% at 100% 0);
+  }
+
+  @keyframes sliderMenuIn {
+    from {
+      transform-origin: top right;
+      clip-path: circle(0% at 100% 0);
+      opacity: 0.1;
+    }
+
+    to {
+      clip-path: circle(50% at 100% 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes sliderMenuOut {
+    from {
+      clip-path: circle(50% at 100% 0);
+      opacity: 1;
+    }
+
+    to {
+      transform-origin: left bottom;
+      clip-path: circle(0% at 100% 0);
+    }
+  }
 }
 
 /* Hamburger Menu */
